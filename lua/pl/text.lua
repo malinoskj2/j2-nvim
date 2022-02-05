@@ -13,7 +13,7 @@
 -- Dependencies: `pl.stringx`, `pl.utils`
 -- @module pl.text
 
-local utils = require("pl.utils")
+local utils = require "pl.utils"
 
 utils.raise_deprecation {
   source = "Penlight " .. utils._VERSION,
