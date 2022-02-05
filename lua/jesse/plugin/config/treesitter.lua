@@ -14,9 +14,15 @@ ts_config.setup {
     enable = true,
     use_languagetree = true,
   },
-  indent = { enable = true, disable = { "yaml" } },
+  indent = {
+    enable = true,
+    disable = { "yaml" },
+  },
   context_commentstring = {
     enable = true,
     enable_autocmd = false,
+  },
+  endwise = {
+    enable = true,
   },
 }

@@ -103,6 +103,7 @@ packer.startup {
       end,
     }
     use "b0o/schemastore.nvim"
+    use "RRethy/nvim-treesitter-endwise"
 
     -- Snippets
     use "L3MON4D3/LuaSnip"
