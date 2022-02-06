@@ -1,6 +1,6 @@
 # j2-nvim
 
-My nvim configuration.
+My Neovim configuration.
 
 ## Dependencies
 
