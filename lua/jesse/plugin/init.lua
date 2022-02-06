@@ -40,13 +40,6 @@ packer.startup {
     }
 
     -- Line
-    use {
-      "nvim-lualine/lualine.nvim",
-      requires = { "kyazdani42/nvim-web-devicons", opt = true },
-      config = function()
-        require "jesse.plugin.config.lualine"
-      end,
-    }
 
     -- Navigation
     use "farmergreg/vim-lastplace"
