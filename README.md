@@ -4,7 +4,7 @@ My Neovim configuration.
 
 ## Dependencies
 
-Most dependencies are plugins which are managed via [packer](https://github.com/wbthomason/packer.nvim). Language servers are installed via [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer). At the moment the config still depends on some binaries being available in the enviroment [see below](#external-dependencies).
+Most dependencies are plugins which are managed via [packer](https://github.com/wbthomason/packer.nvim). Language servers are installed automatically via [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer). At the moment the config still depends on some binaries being available in the enviroment [see below](#external-dependencies).
 
 ### External Dependencies
 
