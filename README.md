@@ -19,3 +19,7 @@ Most dependencies are plugins which are managed via [packer](https://github.com/
 - [nixfmt](https://github.com/serokell/nixfmt)
 - [fd](https://github.com/sharkdp/fd)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
+
+### Penlight
+
+I have copied [Penlight](https://github.com/lunarmodules/Penlight) into this repo for now. Packer requires a dependency on python to pull in lua rocks. Until that changes it will just be kept in repo. Also not sure if I will keep using Penlight all together.
