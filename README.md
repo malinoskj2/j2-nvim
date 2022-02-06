@@ -1,4 +1,4 @@
-# j2-nvim
+# j2-nvim [![style checks](https://github.com/malinoskj2/j2-nvim/actions/workflows/check-style.yml/badge.svg?branch=main)](https://github.com/malinoskj2/j2-nvim/actions/workflows/check-style.yml)
 
 My Neovim configuration.
 
