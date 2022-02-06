@@ -16,6 +16,11 @@ local mappings = {
   -- Navigate buffers
   { "n", "<S-l>", ":bnext<CR>" },
   { "n", "<S-h>", ":bprevious<CR>" },
+  -- Better split navigation
+  { "n", "<C-h>", "<C-w>h" },
+  { "n", "<C-j>", "<C-w>j" },
+  { "n", "<C-k>", "<C-w>k" },
+  { "n", "<C-l>", "<C-w>l" },
   -- Close Stuff
   {
     "n",
