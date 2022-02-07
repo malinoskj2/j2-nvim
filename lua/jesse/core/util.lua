@@ -20,4 +20,15 @@ M.close_all = function()
   M.close_all_floating_windows()
 end
 
+M.hide_status_line = function()
+  local current_type = vim.api.nvim_buf_get_option(0, "ft")
+  local hidden = { "help", "dashboard", "NvimTree", "terminal" }
+
+  if vim.tbl_contains(hidden, current_type) then
+    vim.api.nvim_set_option("laststatus", 0)
+  else
+    vim.api.nvim_set_option("laststatus", 2)
+  end
+end
+
 return M

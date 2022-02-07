@@ -40,6 +40,14 @@ packer.startup {
     }
 
     -- Line
+    use {
+      "feline-nvim/feline.nvim",
+      config = function()
+        require("feline").setup {
+          components = require "jesse.plugin.config.feline",
+        }
+      end,
+    }
 
     -- Navigation
     use "farmergreg/vim-lastplace"
