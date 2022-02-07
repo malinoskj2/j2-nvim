@@ -320,9 +320,4 @@ local component_current_dir = {
 components.active[3][3] = component_current_dir
 -- ######## Right
 
--- Disable for certain filetypes
-vim.cmd [[
-   autocmd BufEnter,BufRead,BufWinEnter,FileType,WinEnter * lua require("jesse.core.util").hide_status_line()
-]]
-
 return components
