@@ -111,6 +111,12 @@ packer.startup {
     }
     use "b0o/schemastore.nvim"
     use "RRethy/nvim-treesitter-endwise"
+    use {
+      "blackCauldron7/surround.nvim",
+      config = function()
+        require("surround").setup { mappings_style = "sandwich" }
+      end,
+    }
 
     -- Snippets
     use "L3MON4D3/LuaSnip"
