@@ -29,6 +29,8 @@ local mappings = {
       close_all()
     end,
   },
+  -- Write changes to buffer
+  { "n", "<leader><leader>", ":w<CR>" },
 }
 
 local opts = { noremap = true, silent = true }
