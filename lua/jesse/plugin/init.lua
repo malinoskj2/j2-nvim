@@ -30,6 +30,12 @@ packer.startup {
         vim.cmd [[colorscheme catppuccin]]
       end,
     }
+    use {
+      "norcalli/nvim-colorizer.lua",
+      config = function()
+        require("colorizer").setup()
+      end,
+    }
 
     -- Dashboard
     use {
