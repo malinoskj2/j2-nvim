@@ -6,7 +6,7 @@ end
 
 ts_config.setup {
   ensure_installed = "maintained",
-  sync_install = false,
+  sync_install = true,
   autopairs = {
     enable = true,
   },
