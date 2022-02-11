@@ -9,6 +9,14 @@ local modules = List {
   "jesse.plugin",
 }
 
-modules:foreach(function(module)
-  require(module)
-end)
+modules
+  :map(function(module)
+    local ok, _ = pcall(require, module)
+    return { ok = ok, module = module }
+  end)
+  :filter(function(result)
+    return not result.ok
+  end)
+  :foreach(function(failed_load)
+    print("Failed to load module: " .. failed_load.module)
+  end)
