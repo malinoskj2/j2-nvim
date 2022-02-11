@@ -2,6 +2,16 @@
 
 My Neovim configuration.
 
+## Install
+
+1. Install externally managed [dependencies](#external-dependencies)
+2. Clone repo and run the following
+
+```zsh
+nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
+nvim
+```
+
 ## Dependencies
 
 Most dependencies are plugins which are managed via [packer](https://github.com/wbthomason/packer.nvim). Language servers are installed automatically via [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer). At the moment the config still depends on some binaries being available in the enviroment [see below](#external-dependencies).
