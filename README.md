@@ -19,6 +19,7 @@ Most dependencies are plugins which are managed via [packer](https://github.com/
 - [nixfmt](https://github.com/serokell/nixfmt)
 - [fd](https://github.com/sharkdp/fd)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
+- [Git](https://git-scm.com/)
 
 ### Penlight
 
