@@ -469,6 +469,24 @@ function List:map(fun, ...)
   return makelist(imap(fun, self, ...), self)
 end
 
+--- Flatten a List of nested Lists by one level
+-- @return a new list: {f(x) for x in self}
+-- @usage List{List {'one', 'two'}, List {'one', 'two'}}:flatten() == {'one','two','one','two'}
+function List:flatten()
+  return self:reduce(function(acc, cur)
+    return List(acc):extend(List(cur))
+  end, List())
+end
+
+--- Apply a function to all elements and flatten nested lists by one level
+-- @func fun a function of at least one argument
+-- @param ... arbitrary extra arguments.
+-- @return a new list: {f(x) for x in self}
+-- @see pl.tablex.imap
+function List:flatmap(fun, ...)
+  return self:map(fun, ...):flatten()
+end
+
 --- Apply a function to all elements, in-place.
 -- Any extra arguments are passed to the function.
 -- @func fun A function that takes at least one argument

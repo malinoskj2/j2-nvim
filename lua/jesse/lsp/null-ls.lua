@@ -19,15 +19,12 @@ local sources = List(languages)
   :reduce(function(acc, cur)
     return List(acc):extend(List(cur))
   end, List())
-  :map(function(null_language_server)
+  :flatmap(function(null_language_server)
     return List {
       servers[null_language_server].diagnostics and diagnostics[null_language_server] or false,
       servers[null_language_server].formatting and formatting[null_language_server] or false,
     }
   end)
-  :reduce(function(acc, cur)
-    return List(acc):extend(List(cur))
-  end, List())
   :filter(function(source)
     return source
   end)
