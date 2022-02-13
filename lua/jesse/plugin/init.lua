@@ -86,12 +86,6 @@ packer.startup {
     use "hrsh7th/cmp-nvim-lua"
     use "hrsh7th/cmp-nvim-lsp"
     use {
-      "windwp/nvim-ts-autotag",
-      config = function()
-        require "jesse.plugin.config.nvim-ts-autotag"
-      end,
-    }
-    use {
       "windwp/nvim-autopairs",
       config = function()
         require "jesse.plugin.config.nvim-autopairs"
