@@ -8,8 +8,11 @@ My Neovim configuration.
 2. Clone repo and run the following
 
 ```zsh
-nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
-nvim
+# Downloads/Compiles internally managed dependencies
+$ ./scripts/install
+
+# Open Neovim :)
+$ nvim
 ```
 
 ## Dependencies
