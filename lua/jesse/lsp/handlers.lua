@@ -75,7 +75,7 @@ M.on_attach = function(client, bufnr)
     end
   end
 
-  lsp_keymap.map(bufnr)
+  lsp_keymap.map()
   lsp_highlight_document(client)
 end
 
