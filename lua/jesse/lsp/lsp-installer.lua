@@ -21,8 +21,19 @@ List(languages)
 
 -- Register a handler that will be called for all installed servers.
 lsp_installer.on_server_ready(function(server)
-  server:setup(vim.tbl_deep_extend("force", {
-    on_attach = require("jesse.lsp.handlers").on_attach,
+  local config = vim.tbl_deep_extend("force", {
     capabilities = require("jesse.lsp.handlers").capabilities,
-  }, servers[server.name] or {}))
+  }, servers[server.name] or {})
+
+  config.on_attach = function(client, bufnr)
+    -- Call base on_attach
+    require("jesse.lsp.handlers").on_attach(client, bufnr)
+
+    -- Call on_attach for specific server if exists
+    if servers[server.name].on_attach ~= nil then
+      servers[server.name].on_attach(client, bufnr)
+    end
+  end
+
+  server:setup(config)
 end)
