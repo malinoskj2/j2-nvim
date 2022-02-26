@@ -106,6 +106,9 @@ packer.startup {
     use "b0o/schemastore.nvim"
     use "RRethy/nvim-treesitter-endwise"
 
+    -- TS
+    use "jose-elias-alvarez/nvim-lsp-ts-utils"
+
     -- Snippets
     use "L3MON4D3/LuaSnip"
     use "saadparwaiz1/cmp_luasnip"
