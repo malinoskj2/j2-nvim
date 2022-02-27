@@ -32,7 +32,7 @@ M.hide_status_line = function()
 end
 
 M.open_nvim_instance = function()
-  vim.cmd "exec '!alacritty -e $SHELL -c $EDITOR'"
+  vim.cmd "silent exec '!alacritty -e $SHELL -c $EDITOR'"
 end
 
 return M
