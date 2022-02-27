@@ -31,4 +31,8 @@ M.hide_status_line = function()
   end
 end
 
+M.open_nvim_instance = function()
+  vim.cmd "exec '!alacritty -e $SHELL -c $EDITOR'"
+end
+
 return M
