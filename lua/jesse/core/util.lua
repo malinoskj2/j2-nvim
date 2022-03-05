@@ -19,6 +19,7 @@ M.close_all_floating_windows = function()
   end
 end
 
+-- Close anything overlaying buffer and splits with content other than actual file
 M.close_all = function()
   vim.cmd "cclose"
   vim.cmd "NvimTreeClose"
@@ -26,6 +27,7 @@ M.close_all = function()
   M.close_all_floating_windows()
 end
 
+-- Hide or unhide status line when appropriate
 M.hide_status_line = function()
   local current_type = vim.api.nvim_buf_get_option(0, "ft")
   local hidden = { "help", "dashboard", "NvimTree", "terminal" }
@@ -36,6 +38,8 @@ M.hide_status_line = function()
     vim.api.nvim_set_option("laststatus", 2)
   end
 end
+
+-- Open a file in a new instance of neovim
 M.open_nvim_instance = function(file_path)
   local command = "silent exec '!alacritty -e $SHELL -c \"$EDITOR " .. file_path .. "\" &'"
   vim.cmd(command)
@@ -52,6 +56,7 @@ M.git_or_find_files = function()
   end
 end
 
+-- Get the file path of the current Telescope prompt selection
 M.get_telescope_selected_file_path = function(prompt_bufnr)
   local current_picker = action_state.get_current_picker(prompt_bufnr)
   local cwd = current_picker.cwd
@@ -60,6 +65,7 @@ M.get_telescope_selected_file_path = function(prompt_bufnr)
   return cwd .. "/" .. seleted_entry[1]
 end
 
+-- Open the current Telescope selection in a new Neovim instance and close prompt
 M.open_telescope_selection_in_new_instance = function(prompt_bufnr)
   local path = M.get_telescope_selected_file_path(prompt_bufnr)
   M.open_nvim_instance(path)
