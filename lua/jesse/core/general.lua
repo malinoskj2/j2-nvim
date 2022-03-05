@@ -18,6 +18,7 @@ local options = {
   undodir = "/tmp/nvim/undodir",
   signcolumn = "yes",
   cmdheight = 1,
+  clipboard = "unnamed",
 }
 
 tablex.foreach(options, function(value, key)
