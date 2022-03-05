@@ -1,5 +1,6 @@
 -- Utils
 
+local builtin = require "telescope.builtin"
 local actions = require "telescope.actions"
 local action_state = require "telescope.actions.state"
 
@@ -41,6 +42,16 @@ M.open_nvim_instance = function(file_path)
 end
 
 -- Telescope
+
+-- Fallback to find_files if not in git repo
+M.git_or_find_files = function()
+  local opts = {}
+  local ok = pcall(builtin.git_files, opts)
+  if not ok then
+    builtin.find_files(opts)
+  end
+end
+
 M.get_telescope_selected_file_path = function(prompt_bufnr)
   local current_picker = action_state.get_current_picker(prompt_bufnr)
   local cwd = current_picker.cwd

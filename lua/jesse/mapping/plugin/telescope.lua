@@ -1,6 +1,6 @@
 -- Telescope Mappings
-local builtin = require "telescope.builtin"
 local util = require "jesse.core.util"
+local builtin = require "telescope.builtin"
 
 local M = {}
 
@@ -14,17 +14,8 @@ M.mappings = {
 }
 
 -- Launch mappings
--- Fallback to find_files if not in git repo
-local git_or_find_files = function()
-  local opts = {}
-  local ok = pcall(builtin.git_files, opts)
-  if not ok then
-    builtin.find_files(opts)
-  end
-end
-
 vim.keymap.set("n", "<leader>f", function()
-  git_or_find_files()
+  util.git_or_find_files()
 end, { noremap = true, silent = true })
 
 vim.keymap.set("n", "<leader>g", function()
