@@ -71,5 +71,10 @@ M.open_telescope_selection_in_new_instance = function(prompt_bufnr)
   M.open_nvim_instance(path)
   actions.close(prompt_bufnr)
 end
+--
+-- NvimTree
+M.open_nvimtree_selection_in_new_instance = function(node)
+  M.open_nvim_instance(node.absolute_path)
+end
 
 return M

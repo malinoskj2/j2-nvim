@@ -131,12 +131,7 @@ packer.startup {
         "kyazdani42/nvim-web-devicons", -- optional, for file icon
       },
       config = function()
-        require("nvim-tree").setup {
-          disable_netrw = true,
-          hijack_netrw = true,
-          auto_close = true,
-          hijack_cursor = true,
-        }
+        require "jesse.plugin.config.nvim-tree"
       end,
     }
 
