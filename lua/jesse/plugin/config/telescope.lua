@@ -1,6 +1,7 @@
 -- Telescope Configuration
 local telescope_present, telescope = pcall(require, "telescope")
 local builtin_present, builtin = pcall(require, "telescope.builtin")
+local telescope_mapping_config = require "jesse.mapping.plugin.telescope"
 
 if not telescope_present or not builtin_present then
   return
@@ -14,9 +15,11 @@ telescope.setup {
   pickers = {
     find_files = {
       find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
+      mappings = telescope_mapping_config.mappings,
     },
     git_files = {
       shorten_path = true,
+      mappings = telescope_mapping_config.mappings,
     },
   },
 }

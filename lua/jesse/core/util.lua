@@ -1,3 +1,8 @@
+-- Utils
+
+local actions = require "telescope.actions"
+local action_state = require "telescope.actions.state"
+
 -- Misc utility functions
 local M = {}
 
@@ -30,9 +35,24 @@ M.hide_status_line = function()
     vim.api.nvim_set_option("laststatus", 2)
   end
 end
+M.open_nvim_instance = function(file_path)
+  local command = "silent exec '!alacritty -e $SHELL -c \"$EDITOR " .. file_path .. "\" &'"
+  vim.cmd(command)
+end
 
-M.open_nvim_instance = function()
-  vim.cmd "silent exec '!alacritty -e $SHELL -c $EDITOR'"
+-- Telescope
+M.get_telescope_selected_file_path = function(prompt_bufnr)
+  local current_picker = action_state.get_current_picker(prompt_bufnr)
+  local cwd = current_picker.cwd
+  local seleted_entry = action_state.get_selected_entry()
+
+  return cwd .. "/" .. seleted_entry[1]
+end
+
+M.open_telescope_selection_in_new_instance = function(prompt_bufnr)
+  local path = M.get_telescope_selected_file_path(prompt_bufnr)
+  M.open_nvim_instance(path)
+  actions.close(prompt_bufnr)
 end
 
 return M
