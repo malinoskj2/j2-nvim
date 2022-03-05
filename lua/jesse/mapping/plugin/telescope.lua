@@ -1,5 +1,5 @@
 -- Telescope Mappings
-local builtin_present, builtin = pcall(require, "telescope.builtin")
+local builtin = require "telescope.builtin"
 local util = require "jesse.core.util"
 
 local M = {}
