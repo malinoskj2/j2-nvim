@@ -68,9 +68,9 @@ cmp.setup {
   },
 
   -- Documentation
-  documentation = {
-    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-  },
+  --  documentation = {
+  --    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  --  },
 
   -- Experimental
   experimental = {
