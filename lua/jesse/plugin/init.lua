@@ -85,6 +85,7 @@ packer.startup {
     use "hrsh7th/cmp-path"
     use "hrsh7th/cmp-nvim-lua"
     use "hrsh7th/cmp-nvim-lsp"
+    use "f3fora/cmp-spell"
     use {
       "windwp/nvim-autopairs",
       config = function()

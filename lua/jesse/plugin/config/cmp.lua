@@ -63,14 +63,10 @@ cmp.setup {
         nvim_lua = "[api]",
         path = "[path]",
         luasnip = "[snip]",
+        spell = "[spell]",
       },
     },
   },
-
-  -- Documentation
-  --  documentation = {
-  --    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-  --  },
 
   -- Experimental
   experimental = {
@@ -78,3 +74,17 @@ cmp.setup {
     ghost_text = true,
   },
 }
+
+-- gitcommit specific setup
+cmp.setup.filetype("gitcommit", {
+  sources = cmp.config.sources {
+    { name = "spell", keyword_length = 4 },
+  },
+
+  -- markdown specific setup
+  cmp.setup.filetype("markdown", {
+    sources = cmp.config.sources {
+      { name = "spell", keyword_length = 4 },
+    },
+  }),
+})
