@@ -217,14 +217,14 @@ function stringx.expandtabs(s, tabsize)
   assert_string(1, s)
   tabsize = tabsize or 8
   return (
-      s:gsub("([^\t\r\n]*)\t", function(before_tab)
-        if tabsize == 0 then
-          return before_tab
-        else
-          return before_tab .. (" "):rep(tabsize - #before_tab % tabsize)
-        end
-      end)
-    )
+    s:gsub("([^\t\r\n]*)\t", function(before_tab)
+      if tabsize == 0 then
+        return before_tab
+      else
+        return before_tab .. (" "):rep(tabsize - #before_tab % tabsize)
+      end
+    end)
+  )
 end
 
 --- Finding and Replacing
