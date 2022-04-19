@@ -7,6 +7,7 @@
 - [ ] configure spelling checks (and associated diagnostics) in file types where appropriate. Maybe within comments in other source as well
 - [ ] setup Nix language server
 - [ ] setup Terraform tooling
+- [ ] use [ftplugin](https://neovim.io/doc/user/usr_43.html#filetype-plugin) to set spell settings for markdown and to setup tabs for php
 
 ## Done
 
