@@ -19,8 +19,6 @@ local options = {
   signcolumn = "yes",
   cmdheight = 1,
   clipboard = "unnamed",
-  spell = true,
-  spelllang = { "en_us" },
 }
 
 tablex.foreach(options, function(value, key)
