@@ -1,6 +1,5 @@
 -- Telescope Mappings
 local util = require "jesse.core.util"
-local builtin = require "telescope.builtin"
 
 local M = {}
 
@@ -19,7 +18,7 @@ vim.keymap.set("n", "<leader>f", function()
 end, { noremap = true, silent = true })
 
 vim.keymap.set("n", "<leader>g", function()
-  builtin.live_grep()
+  require("telescope.builtin").live_grep()
 end, { noremap = true, silent = true })
 
 return M
