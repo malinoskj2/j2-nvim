@@ -19,6 +19,7 @@ local options = {
   signcolumn = "yes",
   cmdheight = 1,
   clipboard = "unnamed",
+  laststatus = 3,
 }
 
 tablex.foreach(options, function(value, key)
