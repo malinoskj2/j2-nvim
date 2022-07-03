@@ -6,7 +6,6 @@ require("nvim-tree").setup {
   hijack_netrw = true,
   hijack_cursor = true,
   view = {
-    auto_resize = true,
     mappings = {
       list = mapping_config.list,
     },

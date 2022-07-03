@@ -1,5 +1,5 @@
 local b = vim.b
-local clrs = require "catppuccin.core.color_palette"
+local clrs = require("catppuccin.api.colors").get_colors()
 
 local shortline = false
 
