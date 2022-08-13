@@ -142,6 +142,9 @@ packer.startup {
       end,
     }
     -- use "JoosepAlviste/nvim-ts-context-commentstring"
+    -- Language
+    -- TypeScript
+    use "jose-elias-alvarez/typescript.nvim"
 
     -- Automatically set up your configuration after cloning packer.nvim
     if PACKER_BOOTSTRAP then
