@@ -36,12 +36,10 @@ lsp_installer.on_server_ready(function(server)
   end
 
   if servers[server.name] and servers[server.name].setup then
-    vim.pretty_print(server.name .. ": " .. "Running if branch")
     servers[server.name].setup {
       server = config,
     }
   else
-    vim.pretty_print(server.name .. ": " .. "Running if branch")
     server:setup(config)
   end
 end)
