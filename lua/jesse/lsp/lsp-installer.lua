@@ -1,45 +1,43 @@
 -- Lsp Installer
 local lsp_installer = require "nvim-lsp-installer"
-local List = require "pl.List"
+local mason_lspconfig = require "mason-lspconfig"
 
 local languages = require "jesse.lsp.languages"
 local servers = require "jesse.lsp.language_servers"
 
+local function get_required_language_servers()
+  return vim.tbl_map(function(language)
+    return language.language_server.name
+  end, languages)
+end
+
 -- Install servers
-List(languages)
-  :filter(function(language)
-    return language.language_server
-  end)
-  :filter(function(language)
-    local ok, server = require("nvim-lsp-installer.servers").get_server(language.language_server["name"])
-    return ok and not server:is_installed()
-  end)
-  :foreach(function(language)
-    local _, server = require("nvim-lsp-installer.servers").get_server(language.language_server["name"])
-    server:install()
-  end)
+mason_lspconfig.setup {
+  ensure_installed = get_required_language_servers(),
+}
 
--- Register a handler that will be called for all installed servers.
-lsp_installer.on_server_ready(function(server)
-  local config = vim.tbl_deep_extend("force", {
-    capabilities = require("jesse.lsp.handlers").capabilities,
-  }, servers[server.name] or {})
+mason_lspconfig.setup_handlers {
+  function(server_name)
+    local config = vim.tbl_deep_extend("force", {
+      capabilities = require("jesse.lsp.handlers").capabilities,
+    }, servers[server_name] or {})
 
-  config.on_attach = function(client, bufnr)
-    -- Call base on_attach
-    require("jesse.lsp.handlers").on_attach(client, bufnr)
+    config.on_attach = function(client, bufnr)
+      -- Call base on_attach
+      require("jesse.lsp.handlers").on_attach(client, bufnr)
 
-    -- Call on_attach for specific server if exists
-    if servers[server.name].on_attach ~= nil then
-      servers[server.name].on_attach(client, bufnr)
+      -- Call on_attach for specific server if exists
+      if servers[server_name].on_attach ~= nil then
+        servers[server_name].on_attach(client, bufnr)
+      end
     end
-  end
 
-  if servers[server.name] and servers[server.name].setup then
-    servers[server.name].setup {
-      server = config,
-    }
-  else
-    server:setup(config)
-  end
-end)
+    if servers[server_name] and servers[server_name].setup then
+      servers[server_name].setup {
+        server = config,
+      }
+    else
+      require("lspconfig")[server_name].setup(config)
+    end
+  end,
+}

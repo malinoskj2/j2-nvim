@@ -93,7 +93,15 @@ packer.startup {
 
     -- Language
     use "neovim/nvim-lspconfig"
-    use "williamboman/nvim-lsp-installer"
+    use {
+      "williamboman/mason.nvim",
+      config = function()
+        require("mason").setup()
+      end,
+    }
+    use {
+      "williamboman/mason-lspconfig.nvim",
+    }
     use "jose-elias-alvarez/null-ls.nvim"
     use {
       "nvim-treesitter/nvim-treesitter",
