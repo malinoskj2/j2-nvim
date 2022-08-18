@@ -1,6 +1,7 @@
 -- Lsp Installer
 local lsp_installer = require "nvim-lsp-installer"
 local mason_lspconfig = require "mason-lspconfig"
+local util = require "jesse.core.util"
 
 local languages = require "jesse.lsp.languages"
 local servers = require "jesse.lsp.language_servers"
@@ -11,9 +12,17 @@ local function get_required_language_servers()
   end, languages)
 end
 
+local function get_required_null_language_servers()
+  local null_language_servers = vim.tbl_map(function(language)
+    return language.null_language_servers
+  end, languages)
+
+  return vim.tbl_flatten(null_language_servers)
+end
+
 -- Install servers
 mason_lspconfig.setup {
-  ensure_installed = get_required_language_servers(),
+  ensure_installed = util.concatArray(get_required_language_servers(), get_required_null_language_servers()),
 }
 
 mason_lspconfig.setup_handlers {
