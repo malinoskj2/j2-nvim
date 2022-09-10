@@ -1,5 +1,4 @@
 -- Lsp Installer
-local lsp_installer = require "nvim-lsp-installer"
 local mason_lspconfig = require "mason-lspconfig"
 local util = require "jesse.core.util"
 
