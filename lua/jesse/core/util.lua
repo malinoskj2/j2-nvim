@@ -73,7 +73,7 @@ M.open_nvimtree_selection_in_new_instance = function(node)
 end
 
 -- Concat 2 list like tables
-M.concatArray = function (a, b)
+M.concatArray = function(a, b)
   local result = { table.unpack(a) }
   table.move(b, 1, #b, #result + 1, result)
   return result

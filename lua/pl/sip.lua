@@ -64,17 +64,17 @@ end
 -- been stripped of pattern names by now.
 local function compress_spaces(patt)
   return (
-    patt:gsub("()%s+()", function(i1, i2)
-      local before = patt:sub(i1 - 2, i1 - 1)
-      if before:match "%$[vifadxlu]" or before:match "^[^%$]?[%w_]$" then
-        local after = patt:sub(i2, i2 + 1)
-        if after:match "%$[vifadxlu]" or after:match "^[%w_]" then
-          return "%s+"
+      patt:gsub("()%s+()", function(i1, i2)
+        local before = patt:sub(i1 - 2, i1 - 1)
+        if before:match "%$[vifadxlu]" or before:match "^[^%$]?[%w_]$" then
+          local after = patt:sub(i2, i2 + 1)
+          if after:match "%$[vifadxlu]" or after:match "^[%w_]" then
+            return "%s+"
+          end
         end
-      end
-      return "%s*"
-    end)
-  )
+        return "%s*"
+      end)
+    )
 end
 
 local pattern_map = {
@@ -145,43 +145,43 @@ function sip.create_pattern(spec, options)
   local k = 1
   local err
   local r = (
-    spec:gsub("%$%S", function(s)
-      local type, name
-      type = s:sub(2, 2)
-      if names then
-        name = names[k]
-        k = k + 1
-      end
-      -- this kludge is necessary because %q generates two matches, and
-      -- we want to ignore the first. Not a problem for named captures.
-      if not names and type == "q" then
-        addfield(nil, "Q")
-      else
-        addfield(name, type)
-      end
-      local res
-      if pattern_map[type] then
-        res = pattern_map[type]
-      elseif type == "q" then
-        -- some Lua pattern matching voodoo; we want to match '...' as
-        -- well as "...", and can use the fact that %n will match a
-        -- previous capture. Adding the extra field above comes from needing
-        -- to accommodate the extra spurious match (which is either ' or ")
-        addfield(name, type)
-        res = "([\"'])(.-)%" .. (kount - 2)
-      else
-        local endbracket = brackets[type]
-        if endbracket then
-          res = "(%b" .. type .. endbracket .. ")"
-        elseif stdclasses[type] or stdclasses[type:lower()] then
-          res = "(%" .. type .. "+)"
-        else
-          err = "unknown format type or character class"
+      spec:gsub("%$%S", function(s)
+        local type, name
+        type = s:sub(2, 2)
+        if names then
+          name = names[k]
+          k = k + 1
         end
-      end
-      return res
-    end)
-  )
+        -- this kludge is necessary because %q generates two matches, and
+        -- we want to ignore the first. Not a problem for named captures.
+        if not names and type == "q" then
+          addfield(nil, "Q")
+        else
+          addfield(name, type)
+        end
+        local res
+        if pattern_map[type] then
+          res = pattern_map[type]
+        elseif type == "q" then
+          -- some Lua pattern matching voodoo; we want to match '...' as
+          -- well as "...", and can use the fact that %n will match a
+          -- previous capture. Adding the extra field above comes from needing
+          -- to accommodate the extra spurious match (which is either ' or ")
+          addfield(name, type)
+          res = "([\"'])(.-)%" .. (kount - 2)
+        else
+          local endbracket = brackets[type]
+          if endbracket then
+            res = "(%b" .. type .. endbracket .. ")"
+          elseif stdclasses[type] or stdclasses[type:lower()] then
+            res = "(%" .. type .. "+)"
+          else
+            err = "unknown format type or character class"
+          end
+        end
+        return res
+      end)
+    )
 
   if err then
     return nil, err
