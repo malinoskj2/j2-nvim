@@ -1,4 +1,5 @@
 return {
-  formatting = true,
-  diagnostics = false,
+  name = "phpcbf",
+  config_name = "phpcbf",
+  type = "formatting",
 }

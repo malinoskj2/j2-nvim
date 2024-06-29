@@ -1,8 +1,7 @@
 -- Core
-local List = require "pl.List"
 
-local modules = List {
-  "jesse.core.auto",
+local modules = {
+  "jesse.core.auto-commands",
   "jesse.core.commands",
   "jesse.core.general",
   "jesse.core.performance",
@@ -10,6 +9,6 @@ local modules = List {
   "jesse.core.util",
 }
 
-modules:foreach(function(module)
+vim.iter(modules):each(function(module)
   require(module)
 end)

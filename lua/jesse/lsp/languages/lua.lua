@@ -1,7 +1,7 @@
 return {
   name = "Lua",
   language_server = {
-    name = "sumneko_lua",
+    name = "lua_ls",
   },
   null_language_servers = {
     "stylua",

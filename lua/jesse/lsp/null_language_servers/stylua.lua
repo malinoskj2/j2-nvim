@@ -1,4 +1,5 @@
 return {
-  formatting = true,
-  diagnostics = false,
+  name = "stylua",
+  config_name = 'stylua',
+  type = 'formatting'
 }

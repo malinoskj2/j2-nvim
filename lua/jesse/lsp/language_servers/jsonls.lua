@@ -1,10 +1,19 @@
 return {
+  name = "jsonls",
+  config_name = 'jsonls',
   capabilities = {
-    formatting = false,
+    textDocument = {
+      completion = {
+        completionItem = {
+          snippetSupport = true
+        }
+      }
+    }
   },
   settings = {
     json = {
-      schemas = require("schemastore").json.schemas(),
+      schemas = require('schemastore').json.schemas(),
+      validate = { enable = true },
     },
   },
 }

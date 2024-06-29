@@ -7,7 +7,7 @@ M.close_all_floating_windows = function()
   local closed_windows = {}
   for _, win in ipairs(vim.api.nvim_list_wins()) do
     local config = vim.api.nvim_win_get_config(win)
-    if config.relative ~= "" then -- is_floating_window?
+    if config.relative ~= "" then        -- is_floating_window?
       vim.api.nvim_win_close(win, false) -- do not force
       table.insert(closed_windows, win)
     end
@@ -17,7 +17,7 @@ end
 -- Close anything overlaying buffer and splits with content other than actual file
 M.close_all = function()
   vim.cmd "cclose"
-  vim.cmd "NvimTreeClose"
+  vim.cmd "Neotree close"
   vim.cmd "normal q"
   M.close_all_floating_windows()
 end
@@ -39,8 +39,6 @@ M.open_nvim_instance = function(file_path)
   local command = "silent exec '!alacritty -e $SHELL -c \"$EDITOR " .. file_path .. "\" &'"
   vim.cmd(command)
 end
-
--- Telescope
 
 -- Fallback to find_files if not in git repo
 M.git_or_find_files = function()
@@ -66,17 +64,18 @@ M.open_telescope_selection_in_new_instance = function(prompt_bufnr)
   M.open_nvim_instance(path)
   require("telescope.actions").close(prompt_bufnr)
 end
---
+
 -- NvimTree
 M.open_nvimtree_selection_in_new_instance = function(node)
   M.open_nvim_instance(node.absolute_path)
 end
 
--- Concat 2 list like tables
-M.concatArray = function(a, b)
-  local result = { table.unpack(a) }
-  table.move(b, 1, #b, #result + 1, result)
-  return result
+-- Default vertical split open behavior
+M.open_vertical_split = function()
+  vim.api.nvim_open_win(0, true, {
+    split = 'right',
+    win = 0,
+  })
 end
 
 return M

@@ -6,6 +6,5 @@ return {
   require "jesse.lsp.languages.php",
   require "jesse.lsp.languages.rust",
   require "jesse.lsp.languages.tailwind",
-  require "jesse.lsp.languages.typescript",
   require "jesse.lsp.languages.yaml",
 }

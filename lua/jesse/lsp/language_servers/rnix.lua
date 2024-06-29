@@ -1,5 +1,0 @@
-return {
-  capabilities = {
-    formatting = false,
-  },
-}

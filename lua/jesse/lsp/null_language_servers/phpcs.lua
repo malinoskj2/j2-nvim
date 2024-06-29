@@ -1,4 +1,5 @@
 return {
-  formatting = false,
-  diagnostics = true,
+  name = "phpcs",
+  config_name = "phpcs",
+  type = "diagnostics",
 }
